@@ -37,7 +37,7 @@ class UserSerializer(serializers.ModelSerializer):
         if "first_name" in validated_data:
             instance.first_name = validated_data["first_name"]
         if "last_name" in validated_data:
-            instance.last_login = validated_data["last_name"]
+            instance.last_name = validated_data["last_name"]
         instance.save()
         return instance
 

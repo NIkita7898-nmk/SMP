@@ -1,15 +1,13 @@
 from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
-from rest_framework.views import APIView
 
 from post.models import Post, Comments
 from post.serializer import PostSerializer, CommentSerializer
 from user.models import CustomUser
 from utils.token import UserMixin
 
+
 # Create your views here.
-
-
 class PostViewset(UserMixin, viewsets.ModelViewSet):
 
     serializer_class = PostSerializer
@@ -60,4 +58,3 @@ class CommentViewset(UserMixin, viewsets.ModelViewSet):
             comment_obj = Comments.objects.create(user=user, post=post, comment=comment)
             comment_obj.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
-
