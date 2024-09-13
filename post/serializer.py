@@ -11,7 +11,6 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
-
     comment = serializers.SerializerMethodField("get_comment")
     user = serializers.StringRelatedField()
     images = serializers.ImageField(required=True)

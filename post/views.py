@@ -15,6 +15,7 @@ class PostViewset(UserMixin, viewsets.ModelViewSet):
 
     def get_queryset(self):
         user = self.get_user()
+  
         return Post.objects.filter(user=user)
 
     def get_serializer_context(self):
@@ -53,7 +54,7 @@ class CommentViewset(UserMixin, viewsets.ModelViewSet):
             user_id = self.kwargs.get("user_id")
             user = CustomUser.objects.get(id=user_id)
             post_id = self.kwargs.get("post_id")
-            post = Post.objects.get(id=post_id, user=user_id)
+            post = Post.objects.filter(id=post_id, user=user_id).first()
             comment = request.data.get("comment")
             comment_obj = Comments.objects.create(user=user, post=post, comment=comment)
             comment_obj.save()

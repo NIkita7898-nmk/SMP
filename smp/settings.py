@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-+sa2l20o9-brw6om@$%l+u@a92v6e41$=gg8q6(o^%j10-*z(w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "drf_yasg",
     "corsheaders",
+    "movie",
 ]
 
 MIDDLEWARE = [
@@ -63,7 +64,7 @@ ROOT_URLCONF = "smp.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -174,5 +175,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "http://yourdomain.com",
+    "http://localhost:8000",
 ]
